@@ -1,2 +1,2 @@
-# LeetCode-Solved-Question
-Collection of LeetCode Solutions - Created using LeetHub
+# LeetCode/GFG-Solved-Question
+Collection of LeetCode and GFG Solutions - Created using LeetHub
