@@ -122,7 +122,7 @@ class Solution {
         return res;
     }
     
-    int burnTree(Node* root, map<Node*, Node*> &nodeToParent){
+    int burnTree(Node* root, map<Node*, Node*> nodeToParent){
         
         int ans = 0;
         map<Node*, bool> visited;
