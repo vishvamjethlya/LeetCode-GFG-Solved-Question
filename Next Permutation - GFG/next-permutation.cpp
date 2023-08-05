@@ -17,11 +17,8 @@ public:
                 break;
             }
         }
-        if(index == -1){
-            reverse(arr.begin(), arr.end());
-            return arr;
-        }
-        for(int i = N - 1; i >= index; i--){
+        
+        for(int i = N - 1; i >= index && index!=-1; i--){
             if(arr[i] > arr[index]){
                 swap(arr[i], arr[index]);
                 break;
