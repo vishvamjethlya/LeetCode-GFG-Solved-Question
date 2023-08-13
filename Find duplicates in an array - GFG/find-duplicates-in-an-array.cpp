@@ -18,7 +18,6 @@ class Solution{
             if(arr[i] != i) st.insert(arr[i]);
         }
         if(st.size() == 0) return {-1};
-        set<int>::iterator it;
         for(auto it = st.begin(); it != st.end(); it++){
             ans.push_back(*it);
         }
