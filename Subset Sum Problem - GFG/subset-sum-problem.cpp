@@ -8,21 +8,31 @@ using namespace std;
 //User function template for C++
 
 class Solution{   
-    public:
-        bool solve(vector<int> & arr, int ind, int sum, vector<vector<int>> &dp){
-            if(sum == 0) return true;
-            if(ind == 0) return (arr[0] == sum);
-            if(dp[ind][sum] != -1) return dp[ind][sum];
-            bool notTake = solve(arr, ind-1, sum, dp);
-            bool take = false;
-            if(arr[ind] <= sum) take = solve(arr, ind-1, sum-arr[ind], dp);
-            return dp[ind][sum] = (notTake || take);
-        }
+    // public:
+        // bool solve(vector<int> & arr, int ind, int sum, vector<vector<int>> &dp){
+        //     if(sum == 0) return true;
+        //     if(ind == 0) return (arr[0] == sum);
+        //     if(dp[ind][sum] != -1) return dp[ind][sum];
+        //     bool notTake = solve(arr, ind-1, sum, dp);
+        //     bool take = false;
+        //     if(arr[ind] <= sum) take = solve(arr, ind-1, sum-arr[ind], dp);
+        //     return dp[ind][sum] = (notTake || take);
+        // }
 public:
     bool isSubsetSum(vector<int>arr, int sum){
         int n = arr.size();
-        vector<vector<int>> dp(n, vector<int>(sum+1, -1));
-        return solve(arr, n-1, sum, dp);
+        vector<vector<bool>> dp(n, vector<bool>(sum+1, 0));
+        for(int i = 0; i < n; i++) dp[i][0] = true;
+        dp[0][arr[0]] = true;
+        for(int ind = 1; ind < n; ind++){
+            for(int target = 1; target <= sum ; target++){
+                bool notTake = dp[ind-1][target];
+                bool take = false;
+                if(arr[ind] <= target) take = dp[ind-1][target - arr[ind]];
+                dp[ind][target] = (take ||  notTake);
+            }
+        }
+        return dp[n-1][sum];
     }
 };
 
