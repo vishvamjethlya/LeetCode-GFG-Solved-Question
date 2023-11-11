@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 /* Link list Node */
@@ -73,15 +74,14 @@ struct Node
 /* Should return true if linked list is circular, else false */
 bool isCircular(Node *head)
 {
-   if(head == NULL || head -> next == head) return true;
-   
-   if(head -> next == NULL) return false;
-   
-   Node* temp = head -> next;
-   
-   while(temp != NULL && temp != head){
-       temp = temp -> next;
-   }
-   if(temp == NULL) return false;
-   else return true;
+   if (head == NULL || head->next == NULL) return false;
+    Node *slow = head;
+    Node *fast = head -> next;
+
+    while(slow != fast){
+        if(fast == NULL || fast -> next == NULL) return false;
+        fast = fast -> next -> next;
+        slow = slow -> next;
+    }
+    return true;
 }
