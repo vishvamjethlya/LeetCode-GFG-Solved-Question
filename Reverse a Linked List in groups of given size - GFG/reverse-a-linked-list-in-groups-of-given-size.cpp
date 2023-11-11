@@ -66,8 +66,8 @@ class Solution
                 count++;
             }
             
-            if(forward != NULL){
-                head -> next = kReverse(forward, k);
+            if(curr != NULL){
+                head -> next = kReverse(curr, k);
             }
             
             return prev;
