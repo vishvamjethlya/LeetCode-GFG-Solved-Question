@@ -49,18 +49,7 @@ void printList(struct node *node)
 class Solution
 {
     public:
-        int getLength(struct node* head){
-            int ans = 0;
-            struct node* temp = head;
-            while(temp != NULL){
-                ans++;
-                temp = temp -> next;
-            }
-            return ans;
-        }
-    
-    public:
-        struct node* kReverse(struct node* head, int k, int length){
+        struct node* kReverse(struct node* head, int k){
             if(head == NULL || head -> next == NULL || k == 1) return head;
             
             struct node* prev = NULL;
@@ -78,7 +67,7 @@ class Solution
             }
             
             if(forward != NULL){
-                head -> next = kReverse(forward, k, (length-k));
+                head -> next = kReverse(forward, k);
             }
             
             return prev;
@@ -86,8 +75,7 @@ class Solution
     public:
     struct node *reverse (struct node *head, int k)
     { 
-        int len = getLength(head);
-        return kReverse(head, k, len);
+        return kReverse(head, k);
     }
 };
 
