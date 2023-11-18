@@ -5,7 +5,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
     private:
-        void dfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>> grid){
+        void bfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>> grid){
             vis[row][col] = 1;
             queue<pair<int, int>> q;
             q.push({row, col});
@@ -41,7 +41,7 @@ class Solution {
             for(int col = 0; col < m; col++){
                 if(!vis[row][col] && grid[row][col] == '1'){
                     vis[row][col] = 1;
-                    dfs(row, col, vis, grid);
+                    bfs(row, col, vis, grid);
                     cnt++;
                 }
             }
