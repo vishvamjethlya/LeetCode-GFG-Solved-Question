@@ -23,8 +23,8 @@ class Solution {
                         
                         if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m
                         && vis[nrow][ncol] != 1 && grid[nrow][ncol] == '1'){
+                            vis[nrow][ncol] = 1;
                             q.push({nrow, ncol});
-                            dfs(nrow, ncol, vis, grid);
                         }
                     }
                 }
